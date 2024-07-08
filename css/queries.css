@@ -147,6 +147,7 @@ em is current font-size - BUT WE TAKE BOTH OF THEM HERE AS EQUAL AND USE EM AND 
   /* ONCE WE REACH THIS MEDIA QUERY(944px AND UNDER THAT), WE HAVE TO SHOW THIS BUTTON*/
   .btn-mobile-nav {
     display: block;
+    z-index: 9999; /*We give always a big number, in orther to stay our focuns(our orange cartesien) on TOP when we click on the button mobile nav(the three horizontal line and also the cross sign for closing the page)!*/
   }
 
   .main-nav {
