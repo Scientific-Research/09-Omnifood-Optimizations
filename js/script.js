@@ -4,9 +4,19 @@ const myName = "Maximilian";
 const h1 = document.querySelector(".heading-primary");
 console.log(h1);
 
-h1.textContent = myName; /** To replace the h1 with myName*/
-h1.style.backgroundColor = "red"; /** To change the background color to red!*/
-h1.style.padding = "5rem"; /** Change the padding */
+// h1.textContent = myName; /** To replace the h1 with myName*/
+// h1.style.backgroundColor = "red"; /** To change the background color to red!*/
+// h1.style.padding = "5rem"; /** Change the padding */
+
+/* Change the text, backgroundColor and padding of h1 when I click on it: */
+h1.addEventListener(
+  "click",
+  () => (
+    (h1.textContent = myName),
+    (h1.style.backgroundColor = "red"),
+    (h1.style.padding = "5rem")
+  )
+);
 
 ///////////////////////////////////////////////////////////
 // Fixing flexbox gap property missing in some Safari versions
