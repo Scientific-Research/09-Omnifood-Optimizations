@@ -95,14 +95,33 @@ allLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
     const href = link.getAttribute("href");
-    console.log(href);
+    // console.log(href);
 
     /* Scroll back to top */
     if (href === "#")
       window.scrollTo({
-        top: 0 /*back to foremost top point of the page!*/,
+        top: 0 /*back to foremost top point of the page! To use this, we have to know the pixel,value of where we want to link!*/,
         behavior: "smooth",
       });
+    if (href !== "#" && href.startsWith("#")) {
+      console.log(href);
+
+      /* MY SOLUTION **************************** */
+      const href2 = href.slice(1, 15);
+      /**To get only the link word for example: meals, how and not symbol #, because getElementById needs only id and not id plus #!*/
+      console.log(href2);
+      const sectionEl = document.getElementById(href2);
+      console.log(sectionEl);
+      sectionEl.scrollIntoView({ behavior: "smooth" });
+      /* MY SOLUTION **************************** */
+
+      /* JONAS SOLUTION **************************** */
+      // const sectionEl2 = document.querySelector(href);
+      // /* When we give an id like #how to a querySelector, it takes it and find the id automatically in HTML - but i used the getElementById which takes only selector without #, that's why i used the slice() function! */
+      // console.log(sectionEl2);
+      // sectionEl2.scrollIntoView({ behavior: "smooth" });
+      /* JONAS SOLUTION **************************** */
+    }
   });
 });
 
