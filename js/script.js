@@ -17,6 +17,7 @@ const date = Date();
 const year = date.split(" ")[3];
 console.log(year);
 
+/* 4) replacing the current year which obtained in last step with the year variable inside the span element */
 currentYear.textContent = year;
 
 // h1.textContent = myName; /** To replace the h1 with myName*/
