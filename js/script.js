@@ -112,6 +112,7 @@ allLinks.forEach((link) => {
       console.log(href2);
       const sectionEl = document.getElementById(href2);
       console.log(sectionEl);
+      /* sectionEl => <section class="section-how" id="how">...</section> */
       sectionEl.scrollIntoView({ behavior: "smooth" });
       /* MY SOLUTION **************************** */
 
@@ -121,6 +122,17 @@ allLinks.forEach((link) => {
       // console.log(sectionEl2);
       // sectionEl2.scrollIntoView({ behavior: "smooth" });
       /* JONAS SOLUTION **************************** */
+
+      /* TO CLOSE THE MOBILE NAVIGATION BAR WHEN I CLICK ON ANY OF THE LINK ON THE NAV PAGE! */
+      /* Only .main-nav works and main-nav-link doesn't work, that's why i wrote here the .main-nav class! */
+      const mainNavEl = document.querySelector(".main-nav");
+      mainNavEl.addEventListener("click", () => {
+        // <header class="header nav-open"></header>
+        /* The default class of header is class="header" which means the Nav bar page will not appear, that's why i use it here => when i click on the cross sign, the class of the header will back to the original("header") from last state which was "header nav-open" => (showing the nav bar page) and the nav bar page will disappear!*/
+
+        /* THE ONLY WAY TO hide THE NAV BAR PAGE IS TO remove nav-open FROM THE header CLASS! */
+        header.className = "header";
+      });
     }
   });
 });
