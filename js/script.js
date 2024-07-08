@@ -4,6 +4,37 @@ const myName = "Maximilian";
 const h1 = document.querySelector(".heading-primary");
 console.log(h1);
 
+const header = document.querySelector(".header");
+console.log(header);
+
+/* MOBILE NAVIGATION */
+/* To get the icon with three horizontal line: */
+const mobNav = document.querySelector(".icon-mobile-nav");
+console.log(mobNav);
+
+/* To get the Close icon, to close the Navbar Page! */
+const mobNavClose = document.querySelector(".close");
+
+/* TO DISPLAY THE NAV BAR PAGE */
+mobNav.addEventListener("click", () => {
+  // <header class="header nav-open"></header>
+  /* The default class of header is class="header" but when we click on the icon, we want that it opens the nav page => that's why we add the nav-open to header!*/
+
+  /* THE ONLY WAY TO SHOW THE NAV BAR PAGE IS TO ADD nav-open TO THE header CLASS! */
+
+  header.className = "header nav-open";
+});
+
+/* TO HIDE THE NAV BAR PAGE */
+mobNavClose.addEventListener("click", () => {
+  // <header class="header nav-open"></header>
+  /* The default class of header is class="header" which means the Nav bar page will not appear, that's why i use it here => when i click on the cross sign, the class of the header will back to the original("header") from last state which was "header nav-open" => (showing the nav bar page) and the nav bar page will disappear!*/
+
+  /* THE ONLY WAY TO hide THE NAV BAR PAGE IS TO remove nav-open FROM THE header CLASS! */
+
+  header.className = "header";
+});
+
 /* MY SOLUTION ************************************ */
 /* Setting the correct date in Copyright section */
 /* 1) getting the year surrounded by span from HTML */
