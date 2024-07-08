@@ -6,6 +6,7 @@ console.log(h1);
 
 /* MOBILE NAVIGATION */
 /* To get the header, because we want to add the class to this header!*/
+/* MY SOLUTION FOR MOBILE NAVIGATION - BOTH SOLUTIONS ARE WORKING ***************************** */
 const header = document.querySelector(".header");
 console.log(header);
 
@@ -35,6 +36,16 @@ mobNavClose.addEventListener("click", () => {
 
   header.className = "header";
 });
+/* MY SOLUTION FOR MOBILE NAVIGATION - BOTH SOLUTIONS ARE WORKING ***************************** */
+
+/* JONAS SOLUTION FOR MOBILE NAVIGATION - BOTH SOLUTIONS ARE WORKING ************************** */
+// const btnNavEl = document.querySelector(".btn-mobile-nav");
+// const headerEl = document.querySelector(".header");
+
+// btnNavEl.addEventListener("click", () => {
+//   headerEl.classList.toggle("nav-open");
+// });
+/* JONAS SOLUTION FOR MOBILE NAVIGATION - BOTH SOLUTIONS ARE WORKING ************************** */
 
 /* MY SOLUTION ************************************ */
 /* Setting the correct date in Copyright section */
