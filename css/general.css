@@ -93,6 +93,9 @@ html {
 
   /* This is important, when we want an animation for the nav page and the nav page comes from right side to the left side of the page => we don't need an extra page at the right side, rather just a moving page to come to the left side of the page! */
   overflow-x: hidden;
+
+  /* To move smoothly to the different part of the page! */
+  scroll-behavior: smooth;
 }
 
 /* what we write here get inherited by all children of body! */
