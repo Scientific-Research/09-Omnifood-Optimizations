@@ -1,0 +1,107 @@
+/*
+---- 01 TYPOGRAPHY SYSTEM
+
+- Font sizes (px):
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights
+Deafult: 400
+
+- Line heights
+Default: 1
+
+---- 02 COLORS
+
+- Primary: #e67e22
+- Tints:
+- Shades:
+- Accents:
+- Greys
+#555
+
+---- 03 IMAGES => www.unsplash.com
+
+---- 04 PERSONS => www.uifaces.co
+
+---- 05 SHADOWS
+
+---- 06 BORDER-RADIUS
+
+---- 07 WHITESPACE
+
+- Spacing System (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+/*First => Our Global RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 12px; */
+  /*1rem will be no longer as 16px and it will overwrite the current 1rem = 16px as default in Browser - therefore, it would be 10px and in all below Parameters dependent to the rem, it will be calculated as 10px and not 16px anymore!*/
+
+  /*VERY IMPORTANT NOTE: BY CHANGING THE FONT-SIZE, WE CAN CHANGE THE ENTIRE LAYOUT AND IT WOULD BE REALLY HANDY ESPECIALLY WHEN WE BUILD A RESPONSIVE LAYOUT!
+  FOR EXAMPLE FOR SMALL SCREEN, WE NEED SMALL SIZE COMPONENTS, THAT'S WHY WE CAN CHANGE THE FONT-SIZE TO SMALL VALUE ONLY HERE IN ONE POINT AND IT WILL CHANGE EVERYWHERE IN THE CODE!
+  */
+
+  /* *****IT IS THE BEST PRACTICE TO USE % INSTEAD OF px AS FOLLOWING:*****
+  10px / 16px (as default value in Browser) = 0.625 = 62.5%
+  Percentage of user's browser font-size setting */
+
+  /* font-size: 100%;  16px as 1rem => 16px / 16px = 1 = 100% => font-size: 100%*/
+  font-size: 62.5%; /* 10px as 1rem => 10px / 16px = 0.625 = 62.5% => font-size: 62.5% */
+  /* font-size: 125%;  20px as 1rem => 20px / 16px = 1.25 = 125% => font-size: 125%*/
+
+  /*IF THE FONT-SIZE IS 16px AS IT IS AS DEFAULT VALUE IN THE BROWSER => 16px * 0.625 = 10px = 1rem
+  IT MEANS I WILL HAVE AT THE END, 10px as FONT-SIZE
+  BUT IF A USER CHANGE THE 16px AS DEFAULT IN BROWSER TO 18px => 18px * 0.625 = 11.25px = 1rem
+  OR IF THE USER CHANGE IT TO THE 12px FOR SOME REASONS => 12px * 0.625 = 7.5px = 1rem */
+
+  /*SOME EXAMPLES:
+   IF WE WANT TO HAVE 16px as 1rem => 16px / 16px = 1 = 100% => font-size: 100%
+   IF WE WANT TO HAVE 10px as 1rem => 10px / 16px = 0.625 = 62.5% => font-size: 62.5% 
+   IF WE WANT TO HAVE 20px as 1rem => 20px / 16px = 1.25 = 125% => font-size: 125% */
+}
+
+/* what we write here get inherited by all children of body! */
+body {
+  font-family: sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+}
+
+.test {
+  /* width: 1000px; */
+  /*with width => width of body(html) and width of TEST element are different!*/
+
+  /* max-width: 1000px; */
+  /* with max-width => width of body(html) and width of TEST element are the same, therefore, this element is flexible and adapts simply to the view port width! */
+
+  /*IN SUMMARY: 
+  IF THE CONTAINER WIDTH IS LARGER THAN THE SPECIFIED MAX-WIDTH, THAN THE WIDTH OF THE ELEMENT IS EQUAL TO THE VALUE TAHT WE SPECIFIED TO THE MAX-WIDTH.
+
+  IF THE CONTAINER WIDTH IS LESS THAN THE SPECIFIED MAX-WIDTH, THAN THE WIDTH OF THE ELEMENT IS EQUAL TO THE 100 PERCENT OF THE CONTAINER ELEMENT WIDTH.
+  */
+  background-color: red;
+  color: white;
+
+  /*REM UNIT: ROOT ELEMENT FONT SIZE
+  ROOT OF THE DOCUMENT IS HTML ELEMENT => ACTUALLY THE PARENT ELEMENT OF THE OTHERS - WHEN WE DON'T DEFINE ANY FONT SIZE ON THIS HTML ELEMENT WHICH IS ROOT ELEMENT, THEN 1 REM IS EQUAL TO THE DEFAULT BROWSER FONT SIZE WHICH IS ALWAYS 16 PX UNLESS THE USER DOES CHANAGE IT.
+  */
+
+  /*MAX-WIDTH NOT WITH PX THIS TIME, BUT WITH REM*/
+  max-width: 50rem; /* 1 rem = 16 px as default for FONT SIZE was taken because we didn't specify any FONT SIZE on the HTML element. => 50*16= 800px*/
+
+  /*WITH 1REM = 10px as mentioned above => max-width would be 500px and not 800px anymore!*/
+
+  color: #fff;
+  font-size: 2rem; /*2rem => 32px => with 1REM = 10px => 2rem = 20px*/
+  /* padding: 100px; */
+  padding: 4rem; /*with 1REM = 10px => 4rem = 40px*/
+}

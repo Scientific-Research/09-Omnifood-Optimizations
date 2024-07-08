@@ -1,0 +1,1103 @@
+/******************************************/
+/*HEADER*/
+/******************************************/
+
+.header {
+  /*Without using flex container here in header as Parent element for both logo and navigation, the navigation and omnifood logo would be together in left side, but we want that logo stays in left side and navigation go to the right side, that's why i use the flex container and space-between. */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #fdf2e9;
+
+  /*Both below statements do the same, but with height, we have this possibility to make the header to be sticky later!*/
+  height: 9.6rem;
+  /* padding-top: 3.8rem; */
+
+  /*the space between browser and the content => logo and navigation word have some distance to the right and left sides!*/
+  padding: 0 4.8rem;
+
+  /* I wrote before that we don't need to mention here the position:relative, it will work even without this, but we found another problem with nav page for small screen like mobiles, that's why we have to write this statement here!
+  WE ALWAYS HAVE TO MAKE THE PARENT AS POSITION:RELATIVE IN RELATION TO THE CHILD (main-nav) WHICH WAS POSITIONED AS ABSOLUTE!*/
+  position: relative;
+}
+
+.logo {
+  height: 2.2rem;
+}
+
+/******************************************/
+/*NAVIGATION*/
+/******************************************/
+
+.main-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+  list-style: none; /*remove the bullet*/
+}
+
+/*Link and Visited for every ancher element(a) and not every li*/
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block; /*to remove the padding problem, it would be the best practice to write this statement always when we have padding for our link!*/
+  text-decoration: none; /*remove the underline*/
+  color: #333;
+  font-weight: 500;
+  font-size: 1.8rem;
+
+  /*We have to put the transition on the original state which means here at link:
+  WHEN I HOVER ON THESE LINKs, THE COLOR OF THE LINK WILL CHANGE BUT NOT QUICK; RATHER, SLOWLY WITH BELOW TRANSITION WHICH MAKES A SOFT COLOR CHANGING => A SOFT ANIMATION! */
+  transition: all 0.3s;
+  /*all: animate all the values for all properties
+  0.3s: for 300 msec
+  */
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #cf711f; /*CHANGING COLOR TO THIS COLOR FOR AN ANIMATION USING ABOVE TRANSITION!*/
+}
+
+/*BOTH CLASSES ARE THERE => THERE IS AN AND BETWEEN THEM AND WE HAVE TO WRITE THEM WITHOUT ANY SPACE => WHEN THEY ARE CONNECTED TOGETHER WITHOUT ANY SPACE => IT MEANS THESE IS AN AND BETWEEN THEM => ACCORDING TO AND: BOTH OF CLASSES HAVE TO BE THERE, OTHERWISE AND WILL NOT WORK!
+AND GIVES MORE PRIORITY TO THE BELOW PSEUDO CLASS AND ALL THE FEATURES RE AVAILABLE FOR main-nav-link:link CLASS, WILL BE APPLIED TO THE BELOW LINK TOO - THERE WOULD BE ONLY ONE CONFLICT BETWEEN THEM WHICH IS COLOR ONE TIME WITH #333 AND ONE TIME WITH #fff AND DUE TO HIGH PRIORITY OF 3 FOR BELOW LINK, #fff WILL BE APPLIED AND NOT #333!*/
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: #fff;
+  background-color: #e67e22;
+
+  /*We don't need to add the transition for below hover here like what we did above, rather, it was added already to .main-nav-link:link class which is enough and also valid for here!*/
+}
+
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+  background-color: #cf711f;
+  /*Normally we have to add the transition to the original state => above link, but we added it already to .main-nav-link:link class above and that is eough and is valid for here too!*/
+}
+
+/* MOBILE SECTION*/
+.btn-mobile-nav {
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  /* BY DEFAULT(FOR LARGE SCREEN), WE HAVE TO HIDE THE ENTIRE BUTTON*/
+  display: none;
+}
+
+.icon-mobile-nav {
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #333;
+}
+
+/* TO NOT DISPLAY THE CLOSE ICON, WE HAVE TWO SOLUTIONS: BOTH ARE WORKING:*/
+/*FIRST SOLUTION => MY SOLUTION:*/
+/* .close {
+  display: none;
+} */
+
+/* SECOND SOLUTION => JONAS SOLUTION*/
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
+}
+
+/******************************************/
+/*HERO SECTION*/
+/******************************************/
+
+.section-hero {
+  background-color: #fdf2e9;
+  /* background-color: #fae5d3; */
+  padding: 4.8rem 0 9.6rem 0; /*We use padding here, because we want to create top and bottom spaces inside and between the GRID elements.*/
+}
+
+/* for width = 1200px and width under 1200px(BECAUSE MAX-WIDTH IS 1200px), Media query will overwrite the background-color to orangered - but for more than 1200px, the background-color would be the same color as before and it will no be overwritten! */
+/* @media (max-width: 1200px) {
+  .section-hero {
+    background-color: orangered;
+  }
+} */
+
+/* exactly like max-width:1200px => for width 600px and under 600px(BECAUSE MAX-WIDTH IS 600PX), Media query will create or when there is already there a border, will overwrite a border around hero section with blue color - but for more than 600px, it will not create a blue border around hero section or will not overwrite it!*/
+/* @media (max-width: 600px) {
+  .section-hero {
+    border: 20px dashed blue;
+    background-color: blue; */
+/* FROM 600px AND UNDER 600px, THE COLOR WOULD NOT BE ORANGERED ANYMORE, RATHER, IT WILL BE OVERWRITTEN BY BLUE COLOR HERE! - WHEN THERE IS CONFLICT BETWENN THEM, ONLY THE LAST ONE IN CODE WILL BE APPLIED LIKE HERE: FOR 600PX AND UNDER THAT, BOTH COLORS => orangered and blue WILL BE APPLIED, BUT THE LAST ONE IN CODE, IT MEANS ONLY THE BLUE COLOR WILL BE APPLIED!*/
+/* }
+} */
+
+/* FOR ANOTHER EXAMPLE, WHEN I SWITCH BOTH 600px AND 1200px IN SUCH A WAY THAT 1200px WILL BE AS THE LAST IN OUR CODE, THE COLOR OF HERO SECTION WOULD BE ALWAYS ORANGERED(BECAUSE THE LAST ONE IN CODE IS 1200px =>IT WILL OVERWRITE THE BLUE COLOR) AND ONLY FOR 600px AND UNDER THAT, WE WILL HAVE A SHADED BLUE COLOR FOR SECTION HERO! */
+
+/*We will use CSS GRID here and our CSS container would be .hero class*/
+.hero {
+  /*when i use section-hero class here, the GRID Container doesn't work well, that's why i use the .hero class which is in div and not section and it works well for GRID CONTAINER!*/
+  /* width: 1300px; */
+  /* but we want to use rem unit! */
+  /* width: 130rem;  THE PROBLEM IS THAT WHEN I CHANGE THE SIZE OF THE PAGE, THE WIDTH OF GRID DOESN'T ADAPT ITSELF TO THE SIZE OF THE PAGE => RESPONSIVENESS IS VERY BAD => THE SOLUTION IS THAT WE HAVE TO USE THE MAX-WIDTH INSTEAD OF WIDTH!*/
+  /*1rem => 10px => 1300px/10px => 130rem*/
+  max-width: 130rem; /*RESPONSIVENESS IS VERY GOOD AND WHEN I CHANGE THE SIZE OF THE PAGE, THE SIZE OF THE GRID CHANGE ITSELF AT THE SAME SIZE, THEREFORE ADAPTS ITS SIZE TO THE SIZE OF THE PAGE AS ITS PARENT!*/
+
+  /* to center the grid in view port! */
+  margin: 0 auto;
+  padding: 0 3.2rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center; /* to center the items vertically! */
+  gap: 9.6rem; /*Space between columns, the same value exactly like padding above!*/
+  /* grid-template-rows: 400px 400px 400px 400px 400px; */
+}
+
+.hero-description {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 4.8rem;
+}
+
+.hero-img {
+  width: 100%; /*get the complete width of its parent(hero-image-box) which is a complete GRID cell.*/
+}
+
+.hero-image-box {
+  /* grid-row: 2/-1;
+  grid-column: 2/-1; */
+}
+
+.delivered-meals {
+  /*To bring the paragraph text and customer images side by side, easiest way is to use flex here in Parent for both children => paragraph and customer images.*/
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 1.6rem; /*distance between customer images and the paragraph*/
+  margin-top: 8rem;
+}
+
+.delivered-imgs {
+  /*to bring all the customer images as children of div in a row horizontally, otherwise they will be in a column(vertically) format!*/
+  display: flex;
+}
+
+.delivered-imgs img {
+  height: 4.8rem;
+  width: 4.8rem; /*Browser gives width automatically but for some Browsers like Safari, we need to do that!*/
+  border-radius: 50%; /*complete round with 50%*/
+
+  /*To have overlap for -16px = -1.6rem between customer images => negative sign pulls images to the right */
+  margin-right: -1.6rem;
+
+  /*to make a nice thin round border around every customer image!*/
+  border: 0.3rem solid #fdf2e9;
+}
+
+/*All the six images get the negative margin-right of 1.6rem and move to the right side, but we don't want that for sixth image because it takes the gap between this picture and the paragraph in the right side, that's why we use the last-child for sixth image to prevent that! */
+.delivered-imgs img:last-child {
+  margin-right: 0;
+  /*OR*/
+  /* margin: 0; */
+}
+
+.delivered-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/*to make +250,000 with special color to bring some more attention using span which is like div but for inline element!*/
+.delivered-text span {
+  color: #cf711f;
+  font-weight: 700;
+}
+
+/******************************************/
+/*FEATURED IN SECTION*/
+/******************************************/
+.section-featured {
+  padding: 4.8rem 0 3.2rem 0;
+}
+
+.heading-featured-in {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 2.4rem;
+  color: #888;
+  /*Going down to #000 makes the color darker but going up to #fff makes the color brighter!*/
+}
+
+/*ACTUALLY WITH BELOW CLASS(.logos img) WE CAN ACHIEVE EXACTLY THE SAME RESULT WHEN WE USE DISPLAY:FLEX BELOW IN .logos CLASS, I PREFER HERE TO USE DISPLAY:FLEX THAT'S WHY I COMMENTED THE BELOW CLASS OUT!*/
+/* /////SOLUTION 1////// */
+/* .logos img {
+  height: 3rem;
+  margin-right: 6.3rem;
+} */
+/* /////SOLUTION 1////// */
+
+/* ///// SOLUTION 2 ////// */
+.logos img {
+  height: 3.2rem;
+
+  /*USING FILTER TO DO ALL KIND OF STUFFS WITH IMAGES:*/
+  /* filter: grayscale(100%); */
+
+  /* filter: blur(10px); */
+
+  /* filter: hue-rotate(90deg); */
+
+  /* filter: saturate(30); */
+
+  /* filter: brightness(100); */
+  /*It makes our logos 100% light(with full brightness) so taht we can not see them anymore!*/
+
+  filter: brightness(0);
+  /*It makes our logos in black color*/
+
+  /*But we want to see them in grey*/
+  /* opacity: 100%;  */
+  /*with 100%, we can see the logos - no opacity at all - nothing changes!
+  When we decrease it, the logos will be invisible - it depends, how much we decrease it!
+
+  THIS IS ACTUALLY THE TRICK TO CHANGE THE COLOR FROM BLACK TO GREY => USING OPACITY 50%
+  */
+  opacity: 50%; /*OR opacity: 0.5;*/
+}
+
+/*logos class is the parent of all logos as children => that's why we define the flex container here!*/
+.logos {
+  display: flex;
+  align-items: center;
+
+  /*Put the space between logos but not at he beginning and not at the end */
+  /* justify-content: space-between; */
+
+  /*Put the space equally between logos and at the beginning and at the end of logos too!*/
+  /* justify-content: space-evenly; */
+
+  /*It is like space-evenly, we have spaces between the logos and at the beginning and at the end too but the difference is that: the spaces at the beginning and at the end of the logos are half of the spaces between logos!*/
+  justify-content: space-around;
+  /*THIS LOOKS NICER THAN THE SPACE-BETWEEN, THAT'S WHY JONAS CHOSE THIS ONE :)*/
+}
+/* ///// SOLUTION 2 ////// */
+
+/******************************************/
+/*HOW IT WORKS SECTION*/
+/******************************************/
+
+.section-how {
+  /*SETUP A GRID 2*2*/
+  /*WE WRITE IT SEPARATELY AS A REUSABLE CLASS BELOW, THAT'S WHY I COMMENTED THIS HERE OUT!*/
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+
+  padding: 9.6rem 0;
+  /* background-color: orangered; */
+}
+
+.step-number {
+  font-size: 8.6rem;
+  font-weight: 600;
+  color: #ddd; /*very light color*/
+  margin-bottom: 1.2rem;
+}
+
+.step-description {
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+.step-img-box {
+  position: relative; /*to work our Absolute positioning below correctly*/
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*COMMON FEATURES COMES HERE:*/
+.step-img-box::before,
+.step-img-box::after {
+  content: "";
+  display: block;
+  border-radius: 50%;
+
+  /*WE WANT TO POSITION THIS CONTENT BEHIND THE CELLPHONE AS ABSOLUTE POSITIONING - EXACTLY LIKE WHAT WE DID BEFORE FOR TOP WORD ALREADY*/
+  position: absolute;
+  /*IN ADDITION TO THAT, we have to go to parent element above => step-img-box and position it as relative */
+  top: 50%;
+  left: 50%;
+
+  /* transform: translate(-160px, -150px); OR the following with % instead of px - It would be much easier than with % because we don't need to calculate how many pixel do we need - with % figure it out automatically!*/
+  /*in -X direction only 50% , in -Y direction only 50%*/
+  transform: translate(-50%, -50%);
+}
+
+/*Using Pseudo element to make a circle behind the cellphone - In this case, we don't touch the html section and only we use before and after Pseudo elements in CSS file below:
+WE HAVE TO ADD ONLY THE PSEUDO ELEMENTS TO THE DIV SURRONDING IMAGE AND NOT IMAGE DIRECTLY.*/
+
+.step-img-box::before {
+  width: 60%; /*bigger than image itself*/
+  /* height: 60%; */
+
+  /* 60% of parent's width - This is somewho a trick to do the same like height:60% => In this case, the height would be 0 but the padding-bottom shows us the 60% of parent's width and it pretend that the height is 60%*/
+  padding-bottom: 60%;
+  background-color: #fdf2e9;
+  z-index: -2; /*This is the bottom layer*/
+}
+
+.step-text-box {
+  /*to center all the items vertically because it is reversed(flex-direction: column)!*/
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+/*For the second circle we need again a Pseudo element, but we can use BEFORE Pseudo element only one time, that's why i use AFTER Pseudo element here!*/
+.step-img-box::after {
+  width: 45%; /*smaller than the first one*/
+  padding-bottom: 45%;
+  background-color: #fae5d3;
+  z-index: -1; /*This places on the first one! => This is the top Layer!*/
+}
+
+.step-img {
+  width: 35%; /*1200-(32*2)(padding right and left) = 1136-96(padding) = 1040 / 2 = 520 (50% of 1040 which is width)*/
+}
+
+/******************************************/
+/*MEALS SECTION*/
+/******************************************/
+
+.section-meals {
+  /*SETUP A GRID 3*3*/
+  /*WE WRITE IT SEPARATELY AS A REUSABLE CLASS BELOW, THAT'S WHY I COMMENTED THIS HERE OUT!*/
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+
+  /*I commented the below padding out, because we don't need the distance between diet headline and two cards(Grid with three columns!)*/
+  /* padding: 9.6rem 0; */
+  /* background-color: orangered; */
+
+  /*This makes the space between content of the page and rest of the page (View Port)*/
+  /* margin-bottom: 9.6rem; */
+  padding: 9.6rem 0;
+}
+
+.meal {
+  /*Horizontally no shadow - Vertically Shadow 24px - Blurr for 48px - 000 makes it black and a value for transparency => 7.5%*/
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+  border-radius: 11px;
+
+  /*Actually we see only the border-radius of two corners of bottom part of the card, to see that on the top of the card, we have to hide the overflow  => it means it will hide these two corners of the top part of the image, in such a awy that we see the border-radius of the corners of the card itself!*/
+  overflow: hidden;
+
+  /*USING TRANSITION PROPERTY ON THE ORIGINAL STATE:*/
+  /*To create an animation while it moves upward when i hover on it, i use the transition => all => and for 300msec*/
+  transition: all 0.4s;
+}
+
+/*meal class in div includes the entire card and when i hover on it, i want that it moves a little bit upward(toward me) - for that we can use transform => scale - to add an animation, see above*/
+.meal:hover {
+  /* transform: scale(1.05); */
+
+  /*OR USING TRANSLATEY TO MOVE THE CARD TO THE TOP(IN -Y DIRECTION, IT IS AGAINST THE MATHEMATICAL Y DIRECTION!)*/
+  transform: translateY(-1.2rem);
+  cursor: pointer;
+
+  /*ADDING SOME SHADOW WHEN WE HOVER ON IT::*/
+  /*Horizontally no shadow - Vertically Shadow 32px - Blurr for 64px - 000 makes it black and a value for transparency => 6%*/
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+}
+
+.meal-content {
+  padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+}
+
+.meal-tags {
+  margin-bottom: 1.2rem;
+
+  /* to create a 0.4rem space between two tags(VEGAN, PALEO) we can use the flex container here as Parent of these two tags and simply using margin-right as I used it in tag class below, in both cases, we get the same result, but preferably is flex, that's why i commented margin-right below out!*/
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tag {
+  /*Span is a inline element and to use the padding for that, it should be converted to inline-block element!*/
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #333;
+  /*On a background color, we need usually some darker text*/
+  border-radius: 100px;
+  /*border-radius: 50%;
+  It doesn't work with % and it would have very strange looking, that's why we use a big number with pixel like 100px*/
+  font-weight: 600;
+
+  /*to create a 0.4rem space between two tags(VEGAN, PALEO), we can use the following margin-right statement OR we can use the flex container in meal-tags class above as Parent of the two tags - I prefer the flex container, that's why i comment the below statement out!*/
+  /* margin-right: 0.4rem; */
+}
+
+.tag--vegetarian {
+  background-color: #51cf66;
+}
+
+.tag--vegan {
+  background-color: #94d82d;
+}
+
+.tag--paleo {
+  background-color: #ffd43b;
+}
+
+.meal-title {
+  font-size: 2.4rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+}
+
+.meal-attributes {
+  list-style: none;
+
+  /*UISNG FLEX CONTAINER HERE IN UL AS PARENT OF LIs TO MAKE THE MARGIN(GAP) BETWEEN THE THREE LIs:*/
+  display: flex;
+  flex-direction: column;
+  /* row-gap: 2rem; OR*/
+  gap: 2rem; /*gap acts now like margin-bottom because the direction is column, but before that in normal flex, it acts like margin-right because the items are as default in a row direction*/
+}
+
+.meal-attribute {
+  font-size: 1.8rem;
+  /* we can use the following margin-bottom + last-child 
+  OR we can use the display:flex
+  I PREFER TO USE FLEX CONTAINER IN ABOVE CLASS => meal-attributes, THAT'S WHY I COMMENTED THE TWO FOLLOWING STATEMENTS OUT:*/
+  /* margin-bottom: 1.8rem; */
+
+  /*meal-attribute class(here) is parent of ion-icon, that's why i can use here as flex conatiner for ion-icons*/
+  display: flex;
+  align-items: center;
+  gap: 1.6rem; /*gap acts here like margin-right*/
+}
+
+/* .meal-attribute:last-child {
+  margin-bottom: 0;
+} */
+
+.meal-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  /*OR INSTEAD OF USING HEIGHT AND WIDTH WE CAN USE THE font-size, THE RESULT IS THE SAME, BUT I PREFER TO USE THE HEIGHT AND WIDTH, THAT'S WHY I COMMENT THE FONT-SIZE OUT!*/
+  /* font-size: 2.4rem; */
+  color: #e67e22;
+}
+
+.meal-img {
+  width: 100%;
+  /*get the complete width of its parent(meal) which is a child of complete GRID cell.*/
+}
+
+.all-recipes {
+  /* here is parent of ancher element, that's why ancher element will inherit below statements from all-recipes class! */
+  /* margin-top: 4.8rem; */
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/******************************************/
+/*TESTIMONIALS SECTION*/
+/******************************************/
+
+.section-testimonials {
+  /*SETUP A GRID 3*3*/
+  /*WE WRITE IT SEPARATELY AS A REUSABLE CLASS BELOW, THAT'S WHY I COMMENTED THIS HERE OUT!*/
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+
+  /*I commented the below padding out, because we don't need the distance between diet headline and two cards(Grid with three columns!)*/
+  /* padding: 9.6rem 0; */
+  /* background-color: orangered; */
+
+  /*This makes the space between content of the page and rest of the page (View Port)*/
+  /* margin-bottom: 9.6rem; */
+
+  /*Changing the background color of testimonial section from white to the following color:*/
+  background-color: #fdf2e9;
+  /* padding: 1.6rem; */
+
+  /*Creating our own GRID for section-testimonials*/
+  display: grid;
+  /* grid-template-columns: repeat(2, 1fr); */
+  grid-template-columns: 55fr 45fr;
+  /*it is like 55% and 45% but actually they are not in percent - anyway, the total width is still 100% for both left and right columns but different for every single column => left column is 5% bigger than right side => They are not equal anymore! => that's why the four texts on the left hand for testimonials have more space to spread itself! */
+
+  /*when we make the page smaller(responsiveness) the gap between the images in gallery(12 images)will not increase!*/
+  align-items: center;
+}
+
+.testimonials-container {
+  padding: 9.6rem;
+  /*padding for all four sides of the testimonial container!*/
+}
+
+.testimonials {
+  /*We can use our REUSABLE grid that we defined already but the column-gap and row-gap are big for testimonial Grid, that's why we define a new GRID here!*/
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 4.8rem;
+  column-gap: 8rem;
+}
+
+.testimonial-image {
+  /* width: 100%; */
+  /*With this width, the images will be very big, because they try to fill the entire GRID CELL up, that's why i have to comment it out and use REM instead!*/
+
+  width: 6.4rem;
+  /*Since the pictures are squared, the height will be figured out by the broswer automatically!*/
+
+  border-radius: 50%;
+  /*They are squared already, we can use 50% to make them round!*/
+
+  margin-bottom: 1.2rem;
+}
+
+.testimonial-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  /*This doesn't need unit => rem, this is only a multiplier which multiplies in font-size*/
+  margin-bottom: 1.6rem;
+}
+
+.testimonial-name {
+  font-size: 1.6rem;
+  /* color: #777; */
+  color: #6f6f6f;
+  /*There is better contrast between this color as Text color and this color #FDF2E9 as Background color checked in this website: https://coolors.co/contrast-checker/6f6f6f-fdf2e9 */
+}
+
+.gallery {
+  /*gallery class is parent of all gallery-items => that's why we write the display:grid here! */
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr; OR*/
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  padding: 1.6rem;
+}
+
+.gallery-item {
+  /*When i hover on every image between these 12 images, it scales up and overflow the border from other image - to prevent that, we can use overflow:hidden - In this case, the image will be bigger but inside itself and not overflow the border of another image!*/
+  overflow: hidden;
+}
+
+/*When i hover on one of these 12 images in gallery, it will be a little bit bigger */
+.gallery-item img:hover {
+  transform: scale(1.1);
+  /*OR SOMETHING CRAZY:*/
+  /* transform: rotate(45deg); */
+  cursor: pointer;
+}
+
+/*The white spaces between big 12 images are due to this fact that the images are inline element, and we have to chnage the display to block element!*/
+/*USING DESCENDENT SELECTOR HERE:*/
+.gallery-item img {
+  display: block; /*the white spaces between images are gone!*/
+  width: 100%;
+  /*Every image takes its entire Cell!*/
+
+  /*to make a smooth transition when i hover on one of these 12 images in Gallery! - We have to write the transition in ORIGINAL STATE, it means here in gallery-item img class!*/
+  transition: all 0.4s;
+}
+
+/******************************************/
+/*PRICING SECTION*/
+/******************************************/
+
+.section-pricing {
+  /*SETUP A GRID 3*3*/
+  /*WE WRITE IT SEPARATELY AS A REUSABLE CLASS BELOW, THAT'S WHY I COMMENTED THIS HERE OUT!*/
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+
+  /*I commented the below padding out, because we don't need the distance between diet headline and two cards(Grid with three columns!)*/
+  /* padding: 9.6rem 0; */
+  /* background-color: orangered; */
+
+  /*This makes the space between content of the page and rest of the page (View Port)*/
+  /* margin-bottom: 9.6rem; */
+  /* padding: 9.6rem 0; */
+  padding: 9.6rem 0 4.8rem 0;
+  /* I changed the margin-bottom from 9.6rem to 4.8rem and it looks better and more balanced now! */
+}
+
+.pricing-plan {
+  /* background-color: #fdf2e9; */
+  /* padding: 4.8rem; */
+  border-radius: 11px;
+  width: 75%; /*make them less width*/
+  /*When i don't write the width:100% or when i write that, anyway, the element occupy the entire GRID cell as default because they are div elements and these elements are block level elmenets and expand to 100% of width of available space*/
+}
+
+.pricing-plan--complete {
+  /*specifying the color only to COMPLETE Package to bring more attention to that!*/
+  background-color: #fdf2e9;
+  padding: 4.8rem;
+
+  /*to hide the right and left sides of the "BEST VALUE" label, we can use the overflow:hidden AND IT MUST BE ON PARENT ELEMENT!*/
+  overflow: hidden;
+
+  /*In Parent, we place the position: relative*/
+  position: relative;
+}
+
+/*How to make the "Best Value" label on top of the COMPLETE PACKAGE using Pseudo element and Absolute Positioning!*/
+.pricing-plan--complete::after {
+  content: "Best Offer";
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  background-color: #ffd43b;
+  /* padding: 0.8rem 3.2rem; */
+  padding: 0.8rem 8rem;
+
+  /*POSITIONING:*/
+  /* top: 25px; */
+  /* top: 4.7%; */
+  top: 6%;
+  /* right: 0; */
+  /* right: -29px; */
+  /* right: -9%; */
+  right: -18%;
+
+  /*In child, we place the  position: absolute*/
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.pricing-plan--starter {
+  /* justify-items:end; doesn't work here, we need a statement only for one item inside one cell and when we justify this item(itself or self) inside this GRID COLUMN CELL to end => we send it to the end of CELL(besides the gap)- below statement is perfect!*/
+  justify-self: end;
+  /* the first pricing-plan(STARTER) GRID Column is at left side in normal situation, but we want to come at right side beside the column-gap and the price-plan(COMPLETE) is already there besides the gap and we want both to be there, that'S why we use justify-self: end;  */
+
+  border: 2px solid #fdf2e9;
+  /*Due to this 2px, two buttons are not aligned only in height of 2px, that's why I have to define padding for every package separately! of course for starter one 2 pixel less than other one!*/
+  padding: 4.6rem;
+}
+
+/*creating a class and put all the commmon features for name, price and text inside that!*/
+.plan-header {
+  text-align: center;
+  margin-bottom: 4.8rem;
+}
+
+.plan-name {
+  color: #cf711f;
+  font-weight: 600;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.75;
+  margin-bottom: 3.2rem;
+}
+
+.plan-price {
+  font-size: 6.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.6rem;
+}
+
+.plan-price span {
+  font-size: 3rem;
+  /* This is the child of plan-price and the font-weight get inherited from Parent which is 600 but we want a new font-weight, that's why we give a new value to that here as 500!*/
+  font-weight: 500;
+  margin-right: 0.8rem;
+}
+
+.plan-text {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #6f6f6f; /*make it a little bit lighter!*/
+}
+
+.plan-sign-up {
+  text-align: center;
+  margin-top: 4.8rem; /*THE SAME VALUE IN plan-header CLASS ABOVE!*/
+  /*Instead of using margin-top here, we can use margin-bottom in list in general.css, but list is Reusable component and we want to keep it pure and not to add margin-bottom there!*/
+}
+
+.plan-details {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/******************************************/
+/*FEATURES SECTION*/
+/******************************************/
+/* .grid--features {
+  margin-top: 9.6rem;
+} */
+
+.feature-icon {
+  color: #e67e22;
+  height: 3.2rem;
+  width: 3.2rem;
+  margin-bottom: 3.2rem;
+  /*to make some free space in value of 1.6rem around the icon*/
+  padding: 1.6rem;
+
+  /*FIRST SOLUTION - JONAS SOLUTION: TO CREATE CIRCLE BEHIND THE IONICONS WITHOUT USING PSEUDO ELEMENT AND ABSOLUTE POSITIONING AND ONLY WITH THESE TWO FOLLOWING STATEMENTS:*/
+  /************************/
+  /* background-color: #fdf2e9;
+  border-radius: 50%; */
+
+  /* border: 1px solid #51cf66;*/
+  /************************/
+
+  /************************/
+  position: relative;
+  /************************/
+}
+
+/*SECOND SOLUTION - MY SOLUTION: TO CREATE CIRCLE BEHIND THE IONICONS USING PSEUDO ELEMENT AND ABSOLUTE POSITIONING:*/
+/************************/
+/*create a round green circle around the iocns using after Pseudo element and absolute positioning*/
+.feature-icon::after {
+  background-color: #fdf2e9;
+  width: 100%;
+  height: 100%;
+  content: "";
+  display: block;
+
+  /* border: 1px solid #51cf66; */
+
+  border-radius: 50%;
+
+  top: 50%;
+  left: 50%;
+  position: absolute;
+
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+/************************/
+
+.feature-title {
+  font-size: 2.4rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+}
+
+.feature-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+/******************************************/
+/*CTA SECTION*/
+/******************************************/
+.section-cta {
+  /* padding: 9.6rem 0; */
+  /* top - right - bottom - left */
+  /* I changed only the padding-bottom from 9.6rem to 12.8rem because the margin-top of the footer is 12.8rem and i wanted that both of them stay at the same value => and it looks now very good and in balanced! */
+  padding: 4.8rem 0 12.8rem 0;
+}
+
+.cta {
+  /* using GRID for big stuffs and FLEX for small stuffs */
+  display: grid;
+
+  /*We want that first Grid item(box => CTA) to be 2/3 and another one to be 1/3(second box => Image)
+  1fr + 2fr = 3fr => 2fr/3fr => for CTA - 1fr/3fr => for Image
+  */
+  /* 2/3 = 66.6% + 1/3 = 33.3% */
+  grid-template-columns: 2fr 1fr;
+  /* background-color: #e67e22; */
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+  border-radius: 11px;
+
+  /*To create a gradient which is lighter in one side and is darker on the another side!
+  IT MEANS WE HAVE A DARKER ORANGE IN ONE SIDE AND LIGHTER ORANGE ON THE OTHER SIDE
+  
+  HOW TO USE GRADIENT? WE HAVE TO USE BACKGROUND-IMAGE:
+  IN LINEAR-GRADIENT, we specify two colors:
+  BY DEFAULT, GRADIENT FLOWS FROM TOP TO BOTTOM:
+  90deg: IT FLOWS FROM LEFT TO THE RIGHT:
+  180deg: IT FLOWS FROM TOP TO BOTTOM(DEFAULT STATE - WITHOUT SPECIFYING DEGREE - is the same like removing 180deg)
+  360deg: IT IS OPPOSITE OF 180deg AND IT FLOWS FROM BOTTOM TO TOP!*/
+  /* background-image: linear-gradient(180deg, red, #e67e22); */
+
+  /*ANOTHER FORM OF GRADIENT IS USING ENGLISH WORDS INSTEAD OF DEGREE FOR EXAMPLE: TO RIGHT, TO LEFT, ...*/
+  /* background-image: linear-gradient(to right, red, #e67e22);
+  background-image: linear-gradient(to left, red, #e67e22); */
+  background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+
+  /* to right: it flows from left(first color) to the right(second color)*/
+
+  /* to right bottom: it flows from top left(first color) to the right bottom(second color)*/
+
+  /*Temp values:*/
+  /* height: 50rem; this height is only for BEGINNING and after that we designed our from, we can remove that - In this case, the form will take automatically the height of content and we don't need this fixed height anymore - AFTER REMOVING THIS FIX HEIGHT, THE SPACE ALL AROUND THE FORM IS THE SAME AND IT LOOKS VERY GOOD!*/
+  /* padding: 50rem; */
+
+  /*Image is overflowing the cta as its new container, that's why in cta, where the image is overflowing, we have to hide the overflow - it means the cta cuts(hide) the sides of the image which are overflowing its outer sides - THEREFORE WE HAVE TO COME TO THE CTA WHICH IMAGE LAID UPON IT AND MAKE THE OVERFLOW AS HIDDEN!*/
+  overflow: hidden;
+}
+
+.cta-text-box {
+}
+
+.cta-img-box {
+  /* background-image: url("/img/eating.jpg"); OR*/
+  /* background-image: url(/img/eating.jpg); */
+
+  /*WE HAVE NOW TWO IMAGES IN BACKGROUND-IMAGE: FIRST IMAGE IS linear-gradient and the SECOND IMAGE is eating.jpg
+  WE HAVE TO MAKE THE FIRST IMAGE(THESE TWO COLORS) A LITTLE BIT TRANSPARENT(WITH CHANGING THE ALPHA), IN SUCH A WAY THAT WE CAN SEE THE SECOND IMAGE(eating.jpg) WHICH IS UNDERNEATH!
+  */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(235, 151, 78, 0.35),
+      rgba(230, 125, 34, 0.35)
+    ),
+    url(/img/eating.jpg);
+  background-size: cover; /*background-image cover all the eating image => that's why we see the full picture on the background image!*/
+  background-position: center;
+}
+
+/* CSS for cta-text-box */
+.cta-text-box {
+  /* padding: 6.4rem; */
+  /* padding-top: 4.8rem; OR*/
+  padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+
+  color: #45260a;
+  /* THE CONTRAST CHECK FOR THIS COLOR AS TEXT COLOR: #45260A AND THIS COLOR AS BACKGROUND COLR: #EB984E IN THIS WEBSITE: https://coolors.co/contrast-checker/45260a-eb984e IS 5.95 WHICH SHOWS A GOOD NUMBER!  */
+}
+
+.cta-text {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 4.8rem;
+}
+
+/* In general.css we have already the heading-secondary class, and it will overwrite the current color, that's why we have to emphasize here that, we want to change the color of heading-secondary which is inside the cta using descendant selector*/
+.cta .heading-secondary {
+  /* color: #45260a; */
+  color: inherit;
+  /*Parent of this class is cta-text-box and has the same color, that's why we don't need to repeat the color here again, rather, we write the inherit keyword instead - Try to use a different color for cta-text-box class and you see that all other texts and heading as children of this calss get the same color!*/
+  margin-bottom: 3.2rem;
+}
+
+.label {
+  cursor: pointer;
+}
+
+/**********************/
+/* CSS STYLE FOR FORM */
+/**********************/
+.cta-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3.2rem;
+  row-gap: 2.4rem;
+}
+
+.cta-form label {
+  /*  with display:block, label will be like div and will be displayed in one line*/
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+.cta-form input,
+.cta-form select {
+  /* Width:100% will occupy entire width of its Parent which is div here and because of div is a block level element, input will occupy entire width of the line!*/
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  /*font of the text that we will write inside the input field!*/
+  font-family: inherit;
+  color: inherit;
+  /*As we see, the input fields, button and select didn't get inherited the font-family from cta-text-box class as parent and only the label got inherited the font-family from cta-text-box class, that's why we can use inherit keyword to force them to accept the font-family in cta-text-box class!*/
+  border: none;
+  background-color: #fdf2e9;
+  border-radius: 9px;
+  /* no px for horizontal direction, 1px fro vertical direction, 2px for Blurr, black color and 10% shadow */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/*make the color of placeholder text much more lighter using Pseudo element placeholder - Pseudo elements are the elements that we can select them for Styling but actually they are not exist on the page like first line, first letter, placeholder */
+.cta-form input::placeholder {
+  color: #aaa;
+  /* a very light color! */
+}
+
+/*THE OUTLINE BOX-SHADOW COLOR DOESN'T LOOK BEAUTIFUL FOR THE ELEMENTS IN CTA FORM, THAT'S WHY WE CAN DEFINE A SEPARATE FOCUS ONYL FOR CTA SECTION AS FOLLOWING:*/
+
+/* DEFINING GLOBAL FOCUS STATE LIKE GLOBAL RESET STATE - WE WANT TO REMOVE THE BLUE OUTLINE FOR EVERY ELEMENT(INPUT ELEMENTS, LINKS AND BUTTONS) WHICH APPEARS ONLY WHEN WE TAB ON IT USING TAB KEY IN KEYBOARD AND FOCUS PSEUDO CLASS - FOCUS IS LIKE LINK, VISITED, HOVER, ... IS JUST A PSEUDO CLASS!*/
+.cta *:focus {
+  /* with this, we lose the focus */
+  outline: none;
+  /* outline: 4px dotted #e67e22; */
+  /* outline-offset: 8px; */
+
+  /* We use the trick of box-shadow to create the outline which we had already but without inset keyword - we use inset to create a border inside of the element, but here we want to create this border outside of the element, that's why we don't use it here!*/
+
+  /* BELOW BOX-SHADOW COLOR DOESN'T LOOK GOOD FOR ELEMENTS IN CTA FORM, THAT'S WHY I COMMENTED THAT OUT AND USE THE SECOND ONE! */
+  /* box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5); */
+  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+
+  /* WHAT WE HAD ALREADY ABOVE:
+  Trick to add border inside - not like above border which adds border outside!:
+  box-shadow: inset 0 0 0 3px #fff;
+  */
+}
+
+/******************************************/
+/*FOOTER SECTION*/
+/******************************************/
+.footer {
+  /* padding: 9.6rem 0; */
+  padding: 12.8rem 0;
+
+  /*make a colorful linear-gradient for footer but Jonas doesn't like that, that's why i comment it out!*/
+  /* background-image: linear-gradient(to right, rgb(200, 217, 102), #43e622);*/
+
+  /* WHAT JONAS LIKES IS ONLY A SIMPLE LINE AS FOLLOWING:*/
+  border-top: 1px solid #eee;
+}
+
+/* To make some more space between OMNIFOOD, contact us and Account columns in compare to other two columnsLike Account, Company and Resources, we define a new GRID LAYOUT here and replace it with this one that we have already - IN this new GRID LAYOUT, The first and second columns have 2fr width which are double the last one - WE HAVE TO DO SOME TRY AND ERROR TO GET THE SUITABLE RESULT:*/
+.grid--footer {
+  /* grid-template-columns: 2fr 2fr 1fr 1fr 1fr; */
+  /* This is best result, the first two columns at the right side have total 3fr and other three columns have total three fr => it means there is a balance in terms of spacing between all five columns and AT THE END, IT LOOKS GOOD! */
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.logo-col {
+  /******************************************************/
+  /* MY SOLUTION TO PUSH THE COPYRIGHT SECTION AT THE END OF THE GRID: */
+  /* we need to choose the display for logo-col as grid to be able to push the last element of this GRID which is copyright at the bottom of the GRID - take a look at copyright class below!*/
+  /* display: grid;
+  gap: 4rem; */
+  /******************************************************/
+
+  /******************************************************/
+  /* THE SOLUTION FROM JONAS TO PUSH THE COPYRIGHT SECTION AT THE END OF THE GRID USING FLEX CONTAINER:*/
+  display: flex;
+  flex-direction: column;
+  /******************************************************/
+}
+
+.footer-logo {
+  /* WE DON'T NEED ALL THESE HERE FOR THIS CLASS, BECAUSE I DEFINED THE PARENT OF THIS CALSS => logo-col AS GRID AND I DID THE margin-bottom: 3.2rem; AS gap: 4rem; THERE!*/
+  display: block;
+  margin-bottom: 4.7rem;
+  /* WITH THE VALUE OF 4.7rem that i achieved from TRY AND ERROR, the three social icons are in the middle of (are aligned with) the Address in Contact us section! */
+  /*link is an inline element, We have to change the display from inline to block to be able to apply the margin-top and -bottom, otherwise it doesn't work!*/
+}
+
+.social-links {
+  list-style: none; /*remove the round bullet points*/
+  display: flex; /*to put them side by side in a row*/
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  /* margin-bottom: 2.4rem; */
+}
+
+.copyright {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #767676;
+
+  /******************************************************/
+  /* THE SOLUTION FROM JONAS TO PUSH THE COPYRIGHT SECTION AT THE END OF THE GRID USING FLEX CONTAINER:
+  THIS IS AN AMAZING FLEX-BOX TRICK which figure out the margin-top automatically that many people don't know about that and it works horizontally and vertically!
+  WE USED IT ALREADY HORIOZONTALLY IN APP LAYOUT AND WE USED IT HERE VERTICALLY!*/
+  margin-top: auto;
+  /******************************************************/
+
+  /******************************************************/
+  /* MY SOLUTION TO PUSH THE COPYRIGHT SECTION AT THE END OF THE GRID: */
+  /*this statement push only copyright at th end of GRID CELL - before this, first of all, we have to make the parent of copyright => logo-col as grid container which i did above - when i push the copyright at the end of the GRID, all items at the end of the page are aligned in a line and it will looks much better!*/
+  /* justify-self: self-end; */
+  /******************************************************/
+}
+
+.address-col {
+  /* This class is the parent of .tel-mailto class below - I made it as flex container to use the trick => margin-top:auto in this below class, but unfortiúnately it doesn't work, I DON'T KNOW WHY? DO YOU KNOW WHY?*/
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.footer-heading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+.contacts {
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.tel-mailto {
+  /* I wanted to use the below trick like the solution for  copyright from Jonas to send the tel and mail to the bottom of the GRID CELL, but unfortunately it doesn't work. I made .address-col class which is parent of this class as flex container, but anyway it doesn't work! I DON'T KNOW WHY? DO YOU KNOW WHY?*/
+  /* margin-top: auto; */
+  margin-top: 3.4rem;
+}
+
+.footer-nav {
+  list-style: none; /*remove the round bullet points*/
+
+  /* This is the THIRD SOLUTION to create the margin-bottom between different links using flex container:*/
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+/* This is the FIRST SOLUTION to create the margin-bottom between different links:*/
+/* ***************************** */
+/* ul li {
+  margin-bottom: 2.4rem;
+}
+ul li:last-child {
+  margin-bottom: 0;
+} */
+/* ***************************** */
+
+/* This is the SECOND SOLUTION to create the margin-bottom between different links:*/
+/* ***************************** */
+/* ul li:not(:last-child) {
+  margin-bottom: 2.4rem;
+} */
+/* ***************************** */
+
+.footer-link:link,
+.footer-link:visited {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: #767676;
+
+  transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+  color: #555;
+}

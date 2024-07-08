@@ -1,0 +1,423 @@
+/*
+---- 01 TYPOGRAPHY SYSTEM
+
+- Font sizes (px):
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights
+Deafult: 400
+Medium: 500
+Semi-bold: 600
+Bold: 700
+
+- Line heights
+Default: 1
+Small: 1.05
+Medium: 1.2
+Paragraph default: 1.6
+Large: 1.8
+
+- Letter spacing
+-0.5px
+0.75px
+
+---- 02 COLORS
+
+- Primary: #e67e22
+- Tints: #fdf2e9, #fae5d3 #eb984e
+- Shades: 
+#cf711f
+#45260a
+
+- Accents:
+- Greys
+
+#888
+#767676(lightest grey allowed on #fff)
+#6f6f6f (lightest grey allowed on #fdf2e9)
+#555
+#333
+
+---- 03 IMAGES => www.unsplash.com
+
+---- 04 PERSONS => www.uifaces.co
+
+---- 05 SHADOWS: 
+
+ box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+
+---- 06 BORDER-RADIUS
+
+Default: 9px
+Medium: 11px
+
+---- 07 WHITESPACE
+
+- Spacing System (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+/*First => Our Global RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 12px; */
+  /*1rem will be no longer as 16px and it will overwrite the current 1rem = 16px as default in Browser - therefore, it would be 10px and in all below Parameters dependent to the rem, it will be calculated as 10px and not 16px anymore!*/
+
+  /*VERY IMPORTANT NOTE: BY CHANGING THE FONT-SIZE, WE CAN CHANGE THE ENTIRE LAYOUT AND IT WOULD BE REALLY HANDY ESPECIALLY WHEN WE BUILD A RESPONSIVE LAYOUT!
+  FOR EXAMPLE FOR SMALL SCREEN, WE NEED SMALL SIZE COMPONENTS, THAT'S WHY WE CAN CHANGE THE FONT-SIZE TO SMALL VALUE ONLY HERE IN ONE POINT AND IT WILL CHANGE EVERYWHERE IN THE CODE!
+  */
+
+  /* *****IT IS THE BEST PRACTICE TO USE % INSTEAD OF px AS FOLLOWING:*****
+  10px / 16px (as default value in Browser) = 0.625 = 62.5%
+  Percentage of user's browser font-size setting */
+
+  /* font-size: 100%;  16px as 1rem => 16px / 16px = 1 = 100% => font-size: 100%*/
+  font-size: 62.5%; /* 10px as 1rem => 10px / 16px = 0.625 = 62.5% => font-size: 62.5% */
+  /* font-size: 125%;  20px as 1rem => 20px / 16px = 1.25 = 125% => font-size: 125%*/
+
+  /*IF THE FONT-SIZE IS 16px AS IT IS AS DEFAULT VALUE IN THE BROWSER => 16px * 0.625 = 10px = 1rem
+  IT MEANS I WILL HAVE AT THE END, 10px as FONT-SIZE
+  BUT IF A USER CHANGE THE 16px AS DEFAULT IN BROWSER TO 18px => 18px * 0.625 = 11.25px = 1rem
+  OR IF THE USER CHANGE IT TO THE 12px FOR SOME REASONS => 12px * 0.625 = 7.5px = 1rem */
+
+  /*SOME EXAMPLES:
+   IF WE WANT TO HAVE 16px as 1rem => 16px / 16px = 1 = 100% => font-size: 100%
+   IF WE WANT TO HAVE 10px as 1rem => 10px / 16px = 0.625 = 62.5% => font-size: 62.5% 
+   IF WE WANT TO HAVE 20px as 1rem => 20px / 16px = 1.25 = 125% => font-size: 125% */
+
+  /* This is important, when we want an animation for the nav page and the nav page comes from right side to the left side of the page => we don't need an extra page at the right side, rather just a moving page to come to the left side of the page! */
+  overflow-x: hidden;
+}
+
+/* what we write here get inherited by all children of body! */
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  /* This is important, when we want an animation for the nav page and the nav page comes from right side to the left side of the page => we don't need an extra page at the right side, rather just a moving page to come to the left side of the page! */
+
+  /* THIS WORKS IF THERE IS NOTHING ABSOLUTELY POSITIONED IN RELATION TO BODY! */
+  overflow-x: hidden;
+
+  /* to center the GRID in view port! THIS DOES THE SAME WHEN I USE margin: 0 auto; in .hero class TAKE A LOOK AT THERE - ONE SOLUTION IS ENOUGH => THAT'S WHY I COMMNTED THAT SOLUTION OUT AND KEEP THE FOLLOWING SOLUTION USING GRID:
+  NO. BUT THE PROBLEM WITH THIS SOLUTION IS THAT, THE BELOW SOLUTION BRING THE ENTIRE BODY IN CENTER AND THAT WE DON'T WANT, BUT USING MARGIN AND AUTO IN .hero CLASS BRING ONLY THE GRID LAYOUT IN CENTER AND THAT EXACTLY WHAT WE WANT! THAT'S WHY I USE THE MARGIN AND AUTO AND COMMENT THE BWLO SOLUTION OUT!*/
+  /* display: grid;
+  align-items: center;
+  justify-content: center; */
+}
+
+/******************************************/
+/*GENERAL REUSABLE COMPONENTS*/
+/******************************************/
+
+.container {
+  /* 1140px*/
+  max-width: 120rem; /*max view port => 1200px*/
+  margin: 0 auto; /*center the container
+  auto means: the auto gives the same margin to the right and left sides and it will be figured out automatically and since the both margins values are the same on both sides, basically make the container looks at it is centered!.*/
+  padding: 0 3.2rem;
+  /*with padding for 32px for right and left sides, we will have at the end, about 1140px => 1200-(32+32) = 1136px*/
+
+  /*To have a good margin from components on the page till end of the page*/
+  /* margin-bottom: 9.6rem; */
+}
+
+/*To avoid write the grid over and over in our code, we write it here one time as a REUSABLE GRID LAYOUT CODE and use it everywhere in the code when we need!*/
+.grid {
+  /*SETUP A GRID 2*2*/
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; OR*/
+  row-gap: 9.6rem;
+  column-gap: 6.4rem;
+
+  /* margin-bottom: 9.6rem; */
+}
+
+/* .grid:last-child {
+  margin-bottom: 0;
+} */
+
+/*All children of grid takes the margin-bottom for 9.6rem but only the last child can not take that! 
+INSTEAD OF TWO ABOVE STATEMENTS WE CAN WRITE ONLY THE BELOW STATEMENT AND THE RESULT IS THE SAME AT THE END!*/
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* .section-how div div {
+  padding: 10rem;
+  font-size: 5rem;
+  background-color: #333;
+} */
+
+/* .section-how div {
+  padding: 10rem;
+  font-size: 5rem;
+} */
+
+/* .section-how div:nth-child(1) {
+  background-color: aqua;
+}
+.section-how div:nth-child(2) {
+  background-color: blue;
+}
+.section-how div:nth-child(3) {
+  background-color: violet;
+}
+.section-how div:nth-child(4) {
+  background-color: yellow;
+} */
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  /*what they have all in common, we bring all here!*/
+  font-weight: 700;
+  color: #333;
+  /* color: #45260a; as reference*/
+  /* color: #343a40; */
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  /* grid-row: 2/3;
+  grid-column: 1/2; */
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+/*How it works*/
+.subheading {
+  /*span is an inline element, we have to make it as block before we do anything else! */
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #cf711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 600;
+  /*This is an inline element, Padding to work as expected, we have to change it to the inline-block, otherwise Padding will not work properly! */
+  padding: 1.6rem 3.2rem;
+  /*This is a good experience to make the padding right and left(3.2rem) twice the padding of top and bottom(1.6rem)!*/
+  border-radius: 9px;
+  text-decoration: none;
+
+  /* **These are only for .btn class** */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  /* ********************************* */
+
+  /*Transition between two states with an animation: changing smoothly(not sharp) the color of the button when i hover on it
+  
+  WE USE TRANSITION PROPERTY HERE BEFORE HOVERING THAT ELEMENT:
+  ALL: we want that both background-color and color animate! 
+  1s(second): How many times this animation happens*/
+
+  /* transition: all 1s; */
+  /* transition: background-color 1s; */
+  /* transition: background-color 0.3s; */
+  /*300ms*/
+
+  /*IT IS ALWAYS IS A BEST PRACTICE TO USE all INSTEAD OF WRITING EVERY PARAMETER ONE BY ONE!*/
+  transition: all 0.3s; /*300ms*/
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: #e67e22;
+  color: #fff;
+}
+
+.btn--full:hover,
+.btn--full:active {
+  background-color: #cf711f; /*a little bit darker*/
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: #fdf2e9; /*a little bit darker*/
+  /* border: 3px solid #fff; */
+
+  /*Trick to add border inside - not like above border which adds border outside!:*/
+  box-shadow: inset 0 0 0 3px #fff;
+  /*Without any offset in any direction => not horizontally and not vertically - we also don't want any Blurr but we want to scale it by 3px like above in the border and again like above we make the color white!*/
+  /*WITH INSET KEYWORD, THE SHADOW WILL BE ADDED TO THE INSIDE OF THE ELEMENT!*/
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  /* Grid items as default are stretched items, that's why we see that the sign up now occupy entire GRID CELL!*/
+  align-self: end; /*bring this button at the end to align with "Please choose one option" button 
+  ------------------------------------
+  TO ALIGN ITEMS VERTICALLY IN A GRID CONTAINER, WE USE ALIGN-ITEMS
+  ------------------------------------
+  TO ALIGN ONE ITEM VERTICALLY IN A GRID CELL, WE USE ALIGN-SELF 
+  ------------------------------------
+  */
+  /* the form input has the padding:1.2rem and in .btn it is 1.6rem, and we have to overwrite it here to 1.2rem to become the same size with other input fields! */
+  padding: 1.2rem;
+}
+
+.btn--form:hover,
+.btn--form:active {
+  background-color: #fff;
+  color: #555;
+  /* the transition is already defined in btn class above as parent, therefore, we don't need to define it here again! */
+}
+
+.link:link,
+.link:visited {
+  color: #e67e22;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  /*currentColor takes the same color as text-color => color: #e67e22; and we don't need to repeat the color several times!*/
+
+  /*link is an inline element, we have to change it to the inline-block to be able to use padding-bottom or padding-top!*/
+  display: inline-block;
+  padding-bottom: 2px;
+
+  /*To do some Animation when we hover on the link, We use transition here in original state of the link(.link:link) and not directly on the hover(.link:hover):*/
+  transition: all 0.3s;
+  /*the line under the link takes 300ms to disappear and takes again 300ms to appear - it has a beautiful appear and disappear state!*/
+}
+
+.link:hover,
+.link:active {
+  color: #cf711f;
+
+  /*This causes the pixel problem and the page moves upward a little bit when we hover on the link!*/
+  /* border-bottom: none; */
+
+  /*To resolve this problem, we can use transparent color instead of a certain color:*/
+  border-bottom: 1px solid transparent;
+
+  /*We can do some animations when we hover on the link - to do that, we have to go to the link:link above, because that is the original state.*/
+}
+
+/* List is reusable => thats's why i cutted it from style.css and pasted it here! */
+.list {
+  list-style: none; /*To reomove the bullets from lis in Diet List*/
+
+  /*To make some distance between icon and span with next icon and span, we use here flex container here.we can also use margin-bottom in list-item class below, that I did already and commented that out!- ANYWAY, the result is the same!*/
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem; /*acts as margin-bottom here because the flex-direction is column now!*/
+}
+
+.list-item {
+  /*this class(list-item) is parent of icon and span, that's why we can define display as flex here and center them vertically => align-items: center exactly what we had already in attribute list already!*/
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  font-size: 1.8rem;
+  line-height: 1.2;
+  /*We can use this margin-bottom to make some distance between icon and span to next icon and span - But like alwayse I would like to use flex container in Parent element which is list class above, that's why I comment the below statement out!*/
+  /* margin-bottom: 1rem; */
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #e67e22;
+}
+
+/* DEFINING GLOBAL FOCUS STATE LIKE GLOBAL RESET STATE - WE WANT TO REMOVE THE BLUE OUTLINE FOR EVERY ELEMENT(INPUT ELEMENTS, LINKS AND BUTTONS) WHICH APPEARS ONLY WHEN WE TAB ON IT USING TAB KEY IN KEYBOARD AND FOCUS PSEUDO CLASS - FOCUS IS LIKE LINK, VISITED, HOVER, ... IS JUST A PSEUDO CLASS!*/
+*:focus {
+  /* with this, we lose the focus */
+  outline: none;
+  /* outline: 4px dotted #e67e22; */
+  /* outline-offset: 8px; */
+
+  /* We use the trick of box-shadow to create the outline which we had already but without inset keyword - we use inset to create a border inside of the element, but here we want to create this border outside of the element, that's why we don't use it here!*/
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+
+  /* WHAT WE HAD ALREADY ABOVE:
+  Trick to add border inside - not like above border which adds border outside!:
+  box-shadow: inset 0 0 0 3px #fff;
+  */
+}
+
+/* .btn--outline {
+  margin-left: 1.6rem;
+} */
+
+/*.margin-right-sm is so called: a helper class
+The above .btn--outline class has the same result like here and make 1.6rem distance between two buttons(links) with highest priority => !important => it means this must to take effect, it doesn't matter what happens on this element till now!. Jonas prefer this helper class, that's why i commented the above class out!*/
+
+/*HELPER/SETTINGS CLASSES - FOR THE SAKE OF REUSABILITY*/
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+
+.margin-bottom-md {
+  /*To add margin-bottom after entire grid with three columns and this link => See all receipes
+  WE CAN ALSO DO THIS IN STYLE.CSS WHICH GIVES THE SAME RESULT:
+  .all-recipes {
+  margin-top: 4.8rem;
+  }
+  I DID THAT THERE AND COMMENTED IT OUT! I PREFER TO DO TAHT HERE BELOW!
+  */
+  margin-bottom: 4.8rem !important;
+}
+
+/*To center span and h2 => they are children and get inherited from below class(a helper class for the sake of reusability) which is in div as Parent - We can do the same in container class but in this case, it will affect all other span and h2 too!*/
+.center-text {
+  text-align: center;
+}
+
+strong {
+  font-weight: 500;
+  /*default is 700*/
+}
