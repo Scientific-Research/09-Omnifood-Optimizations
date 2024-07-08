@@ -4,6 +4,7 @@ const myName = "Maximilian";
 const h1 = document.querySelector(".heading-primary");
 console.log(h1);
 
+/* MY SOLUTION ************************************ */
 /* Setting the correct date in Copyright section */
 /* 1) getting the year surrounded by span from HTML */
 const currentYear = document.querySelector(".copyright span");
@@ -19,20 +20,29 @@ console.log(year);
 
 /* 4) replacing the current year which obtained in last step with the year variable inside the span element */
 currentYear.textContent = year;
+/* MY SOLUTION ************************************ */
+
+/* JONAS SOLUTION ******************************** */
+// const yearEl = document.querySelector(".year");
+// const currentYear1 = new Date().getFullYear();
+// console.log(currentYear1);
+// yearEl.textContent = currentYear1;
+/* JONAS SOLUTION ******************************** */
 
 // h1.textContent = myName; /** To replace the h1 with myName*/
 // h1.style.backgroundColor = "red"; /** To change the background color to red!*/
 // h1.style.padding = "5rem"; /** Change the padding */
 
 /* Change the text, backgroundColor and padding of h1 when I click on it: */
-h1.addEventListener(
-  "click",
-  () => (
-    (h1.textContent = myName),
-    (h1.style.backgroundColor = "red"),
-    (h1.style.padding = "5rem")
-  )
-);
+/* THE BELOW addEventListener IS ONLY FOR TRAINING, THAT'S WHY I COMMENT IT OUT! */
+// h1.addEventListener(
+//   "click",
+//   () => (
+//     (h1.textContent = myName),
+//     (h1.style.backgroundColor = "red"),
+//     (h1.style.padding = "5rem")
+//   )
+// );
 
 ///////////////////////////////////////////////////////////
 // Fixing flexbox gap property missing in some Safari versions
