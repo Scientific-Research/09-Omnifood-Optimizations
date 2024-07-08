@@ -4,6 +4,21 @@ const myName = "Maximilian";
 const h1 = document.querySelector(".heading-primary");
 console.log(h1);
 
+/* Setting the correct date in Copyright section */
+/* 1) getting the year surrounded by span from HTML */
+const currentYear = document.querySelector(".copyright span");
+console.log(currentYear);
+
+/* 2) defining the date variable and getting the date*/
+const date = Date();
+// console.log(date);
+
+/* 3) getting only the year inside the date which is the third item in it! */
+const year = date.split(" ")[3];
+console.log(year);
+
+currentYear.textContent = year;
+
 // h1.textContent = myName; /** To replace the h1 with myName*/
 // h1.style.backgroundColor = "red"; /** To change the background color to red!*/
 // h1.style.padding = "5rem"; /** Change the padding */
