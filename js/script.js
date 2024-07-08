@@ -4,10 +4,11 @@ const myName = "Maximilian";
 const h1 = document.querySelector(".heading-primary");
 console.log(h1);
 
+/* MOBILE NAVIGATION */
+/* To get the header, because we want to add the class to this header!*/
 const header = document.querySelector(".header");
 console.log(header);
 
-/* MOBILE NAVIGATION */
 /* To get the icon with three horizontal line: */
 const mobNav = document.querySelector(".icon-mobile-nav");
 console.log(mobNav);
