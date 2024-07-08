@@ -123,6 +123,7 @@ allLinks.forEach((link) => {
       // sectionEl2.scrollIntoView({ behavior: "smooth" });
       /* JONAS SOLUTION **************************** */
 
+      /* MY SOLUTION ******************************* */
       /* TO CLOSE THE MOBILE NAVIGATION BAR WHEN I CLICK ON ANY OF THE LINK ON THE NAV PAGE! */
       /* Only .main-nav works and main-nav-link doesn't work, that's why i wrote here the .main-nav class! */
       const mainNavEl = document.querySelector(".main-nav");
@@ -133,6 +134,13 @@ allLinks.forEach((link) => {
         /* THE ONLY WAY TO hide THE NAV BAR PAGE IS TO remove nav-open FROM THE header CLASS! */
         header.className = "header";
       });
+      /* MY SOLUTION ******************************** */
+
+      /* JONAS SOLUTION **************************** */
+      /* Close mobile Navigation */
+      // if (link.classList.contains("main-nav-link"))
+      //   header.classList.toggle("nav-open");
+      /* JONAS SOLUTION **************************** */
     }
   });
 });
