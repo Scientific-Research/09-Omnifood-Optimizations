@@ -23,8 +23,8 @@ mobNav.addEventListener("click", () => {
   /* The default class of header is class="header" but when we click on the icon, we want that it opens the nav page => that's why we add the nav-open to header!*/
 
   /* THE ONLY WAY TO SHOW THE NAV BAR PAGE IS TO ADD nav-open TO THE header CLASS! */
-
-  header.className = "header nav-open";
+  /* For mobile mode, we need all these three together! */
+  header.className = "header nav-open sticky";
 });
 
 /* MY SOLUTION ***********************************************************/
@@ -52,7 +52,6 @@ mobNavClose.addEventListener("click", () => {
   /* The default class of header is class="header" which means the Nav bar page will not appear, that's why i use it here => when i click on the cross sign, the class of the header will back to the original("header") from last state which was "header nav-open" => (showing the nav bar page) and the nav bar page will disappear!*/
 
   /* THE ONLY WAY TO hide THE NAV BAR PAGE IS TO remove nav-open FROM THE header CLASS! */
-
   header.className = "header";
 });
 /* MY SOLUTION FOR MOBILE NAVIGATION - BOTH SOLUTIONS ARE WORKING ***************************** */
