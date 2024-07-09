@@ -27,6 +27,25 @@ mobNav.addEventListener("click", () => {
   header.className = "header nav-open";
 });
 
+/* MY SOLUTION ***********************************************************/
+// TO HAVE THE NAV BAR ONLY WHEN WE REACH THE FEATURE SECTION AND AFTER THAT - WHEN WE BACK TO THE TOP OF THE PAGE, THE NAVBAR WILL DISAPPEARE BECAUSE WE HAVE THE FIXED NAVBAR THERE - WE DON'T NEED A SECOND ONE THERE!
+const featuredNav = document.querySelector(".section-featured");
+console.log(featuredNav);
+
+window.addEventListener("scroll", () => {
+  const scrollPosition = window.scrollY;
+
+  //Check if the scroll position is within the second section
+  if (scrollPosition >= featuredNav.offsetTop) {
+    /* Once we reach the feature section, the sticky class will be added to the header class in header section and sticky NavBar will appear and it stays till end of the page!  */
+    header.className = "header sticky";
+  } else {
+    /* When we back to the top of the page, the navBar will be disappeared! */
+    header.className = "header";
+  }
+});
+/* MY SOLUTION ***********************************************************/
+
 /* TO HIDE THE NAV BAR PAGE */
 mobNavClose.addEventListener("click", () => {
   // <header class="header nav-open"></header>
