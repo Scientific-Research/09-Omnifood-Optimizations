@@ -155,6 +155,7 @@ em is current font-size - BUT WE TAKE BOTH OF THEM HERE AS EQUAL AND USE EM AND 
     background-color: rgba(255, 255, 255, 0.5);
     /* The content behind the sticky navBar page is blur now and looks good and interesting! */
     -webkit-backdrop-filter: blur(10px);
+    /*I got the -webkit- prefix from caniuse.com website!*/
     backdrop-filter: blur(10px);
     /* The parent has to be positioned as relative => The parent is header, but we want that to be displayed in entire page, that's why the parent would be entire view port => that's why we don't need to specify the parent and when i specify that, that i did already in header class, but i commented it out already => the result will not change and will stay the same!*/
 
