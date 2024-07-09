@@ -24,7 +24,16 @@ mobNav.addEventListener("click", () => {
 
   /* THE ONLY WAY TO SHOW THE NAV BAR PAGE IS TO ADD nav-open TO THE header CLASS! */
   /* For mobile mode, we need all these three together! */
-  header.className = "header nav-open sticky";
+  header.className = "header nav-open";
+
+  /* ******************************** */
+  const scrollPosition = window.scrollY;
+  /* The problem is that, without this if condition, when i click on the NavBar button, when we are at the top of the page, the sticky navBar will be opened too in addition to the navbar page, what we don't want that. With below if condition, only when we are at the feature section and after that, the sticky navBar will opens and nav-open button works too well!*/
+  if (scrollPosition >= featuredNav.offsetTop) {
+    /* Once we reach the feature section, the sticky class will be added to the header class in header section and sticky NavBar will appear and it stays till end of the page!  */
+    header.className = "header nav-open sticky";
+  }
+  /* ******************************** */
 });
 
 /* MY SOLUTION ***********************************************************/
@@ -34,7 +43,6 @@ console.log(featuredNav);
 
 window.addEventListener("scroll", () => {
   const scrollPosition = window.scrollY;
-
   //Check if the scroll position is within the second section
   if (scrollPosition >= featuredNav.offsetTop) {
     /* Once we reach the feature section, the sticky class will be added to the header class in header section and sticky NavBar will appear and it stays till end of the page!  */
