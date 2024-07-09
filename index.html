@@ -87,12 +87,18 @@
             </div>
           </div>
           <div class="hero-image-box">
-            <!-- Minimize the image size using WebP technology using this website: https://squoosh.app/editor -->
-            <img
-              src="img/hero-original.webp"
-              class="hero-img"
-              alt="woman enjoing food, meals in storage container, and food bowls on a table"
-            />
+            <!-- what is doing <picture> below? For those browsers who can not display the Webp, it will simply select another one => png one! that's why we have to put the <img> inside the <picture> tag!-->
+            <picture>
+              <source srcset="/img/hero-original.webp" type="/image/webp" />
+              <source srcset="/img/hero-min-size.png" type="/image/png" />
+
+              <!-- Minimize the image size using WebP technology using this website: https://squoosh.app/editor -->
+              <img
+                src="/img/hero-original.webp"
+                class="hero-img"
+                alt="woman enjoing food, meals in storage container, and food bowls on a table"
+              />
+            </picture>
           </div>
         </div>
       </section>
