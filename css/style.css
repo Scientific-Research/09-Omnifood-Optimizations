@@ -104,6 +104,17 @@ AND GIVES MORE PRIORITY TO THE BELOW PSEUDO CLASS AND ALL THE FEATURES RE AVAILA
   display: none;
 }
 
+/* STICKY NAVIGATION - WE PUT THIS STICKY CLASS IN HEADER TO MAKE THE ENTIRE HEADER AS STICKY!*/
+.sticky {
+  /* fix the element in view port and will not move it when we scroll the page!*/
+  position: fixed;
+  top: 0; /*Zero space till top => it sticks to the foremost top point */
+  bottom: 0; /*Zero space till bottom => it sticks to the foremost bottom point */
+  width: 100%; /*It covers entire page top side*/
+  background-color: rgba(255, 255, 255, 0.97);
+  z-index: 9999; /*A very high value to stay always on the top!*/
+}
+
 /******************************************/
 /*HERO SECTION*/
 /******************************************/
