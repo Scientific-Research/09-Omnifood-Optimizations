@@ -111,8 +111,12 @@ AND GIVES MORE PRIORITY TO THE BELOW PSEUDO CLASS AND ALL THE FEATURES RE AVAILA
   top: 0; /*Zero space till top => it sticks to the foremost top point */
   bottom: 0; /*Zero space till bottom => it sticks to the foremost bottom point */
   width: 100%; /*It covers entire page top side*/
+  height: 8rem;
+  padding-top: 0;
+  padding-bottom: 0;
   background-color: rgba(255, 255, 255, 0.97);
   z-index: 9999; /*A very high value to stay always on the top!*/
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
 }
 
 /******************************************/
