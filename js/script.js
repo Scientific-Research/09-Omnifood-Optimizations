@@ -29,7 +29,7 @@ mobNav.addEventListener("click", () => {
   /* ******************************** */
   const scrollPosition = window.scrollY;
   /* The problem is that, without this if condition, when i click on the NavBar button, when we are at the top of the page, the sticky navBar will be opened too in addition to the navbar page, what we don't want that. With below if condition, only when we are at the feature section and after that, the sticky navBar will opens and nav-open button works too well!*/
-  if (scrollPosition >= featuredNav.offsetTop) {
+  if (scrollPosition >= pixelPositionBeforeFeatureSection) {
     /* Once we reach the feature section, the sticky class will be added to the header class in header section and sticky NavBar will appear and it stays till end of the page!  */
     header.className = "header nav-open sticky";
   }
@@ -41,10 +41,13 @@ mobNav.addEventListener("click", () => {
 const featuredNav = document.querySelector(".section-featured");
 console.log(featuredNav);
 
+const pixelPositionBeforeFeatureSection = 550; // Adjust this value as needed
+
 window.addEventListener("scroll", () => {
   const scrollPosition = window.scrollY;
   //Check if the scroll position is within the second section
-  if (scrollPosition >= featuredNav.offsetTop) {
+  // if (scrollPosition >= featuredNav.offsetTop) {
+  if (scrollPosition >= pixelPositionBeforeFeatureSection) {
     /* Once we reach the feature section, the sticky class will be added to the header class in header section and sticky NavBar will appear and it stays till end of the page!  */
     header.className = "header sticky";
   } else {
@@ -53,6 +56,37 @@ window.addEventListener("scroll", () => {
   }
 });
 /* MY SOLUTION ***********************************************************/
+
+/* JONAS SOLUTION ***********************************************************/
+// Sticky navigation
+
+// const sectionHeroEl = document.querySelector(".section-hero");
+
+// const obs = new IntersectionObserver(
+//   (entries) => {
+//     const ent = entries[0];
+//     console.log(ent);
+
+//     if (ent.isIntersecting === false) {
+//       // document.querySelector(".header").classList.add("sticky");
+//       document.body.classList.add("sticky");
+//     }
+//     if (ent.isIntersecting === true) {
+//       // document.querySelector(".header").classList.add("sticky");
+//       document.body.classList.remove("sticky");
+//     }
+//   },
+//   {
+//     // In the viewport => when section hero comes at the end => the navBar has to be fired!
+//     root: null,
+//     threshold: 0,
+//     rootMargin: "-80px",
+//     /* exactly when we reach the 80px which is the height of sticky, the sticky nav bar will appear, in this way it begins sooner and will not cover the top part of the feature section!*/
+//   }
+// );
+// obs.observe(sectionHeroEl);
+
+/* JONAS SOLUTION ***********************************************************/
 
 /* TO HIDE THE NAV BAR PAGE */
 mobNavClose.addEventListener("click", () => {

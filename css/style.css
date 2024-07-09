@@ -105,6 +105,8 @@ AND GIVES MORE PRIORITY TO THE BELOW PSEUDO CLASS AND ALL THE FEATURES RE AVAILA
 }
 
 /* STICKY NAVIGATION - WE PUT THIS STICKY CLASS IN HEADER TO MAKE THE ENTIRE HEADER AS STICKY!*/
+/* ALL ITEMS WILL BE APPLIED TO THE HEADER WHEN STICKY IS PRESENT ON ONE OF THE PARENT ELEMENTS, THEN WOULD BE THE BODY!, OTHERWISE IT WILL NOT APPLIED! LIKE WHAT WE HAD ALREADY IN .nav-open .main-nav, => ALL ITEMS WILL BE ONLY APPLIED TO .main.nav, WHEN .nav-open IS PRESENT ON ONE OF THE PARENT ELEMENT!*/
+/* .sticky .header { */
 .sticky {
   /* fix the element in view port and will not move it when we scroll the page!*/
   position: fixed;
@@ -117,6 +119,12 @@ AND GIVES MORE PRIORITY TO THE BELOW PSEUDO CLASS AND ALL THE FEATURES RE AVAILA
   background-color: rgba(255, 255, 255, 0.97);
   z-index: 9999; /*A very high value to stay always on the top!*/
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+}
+
+/* To avoid the the page from jumping when sticky NavBar appear on the page => the margin-top will be only applied to the .section-hero if .sticky is present on one of the parent elements which is Body here!*/
+/* .sticky .section-hero { */
+.sticky .section-featured {
+  margin-top: 9.6rem;
 }
 
 /******************************************/
